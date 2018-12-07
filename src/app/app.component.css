@@ -1,0 +1,16 @@
+
+.break {
+    white-space: pre-line;
+    font-family: "Segoe UI";
+    font-size: 1rem;
+}
+
+.timer {
+    margin: 0px 30px;
+    color: rgb(196, 68, 9);
+}
+
+span {
+    color:red;
+    font-size: 3em;
+}

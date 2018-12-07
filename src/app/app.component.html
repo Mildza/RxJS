@@ -1,21 +1,263 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+
+  <h1 class="text-center my-4">RxJS</h1>
+
+  
+  <p>RxJS powerful is its ability to produce values using pure functions. That means our code is less prone to errors.</p>
+  <p>An Operator is a function which creates a ne Observable based on the current Observable. This is a pure operation: the previous Observable stays unmodified.</p>
+  <p>Functions can only return one value. Observables can "return" multiple values over time either synchronously or asynchronously.</p>
+
+  <p><strong> Observable:</strong> represents the idea of an invokable collection of future values or events.</p>
+  <p><strong>Observer:</strong> is a collection of callbacks that knows how to listen to values delivered by the Observable.</p>
+  <p><strong> Subscription:</strong> represents the execution of an Observable, is primarily useful for cancelling the execution.</p>
+  <p><strong>Operators:</strong> are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.</p>
+  <p><strong>Schedulers:</strong> are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.</p>
+
+  
+  <div class="row mb-3">
+    <div class="col-sm-2">
+        <h4>Subject</h4>
+    </div>
+    <div class="col-sm-6">
+      <p>While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast. Subscribe does not invoke a new execution that delivers values. It simply registers the given Observer in a list of Observers.</p>
+        <p><em>Feed values 1, 2, 3 to Subject, then create second observer and push value 4.</em></p>
+     </div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-4">
+        <button class="btn btn-warning d-inline"  (click)="pushToSubject()">Feed</button></div>
+        <div class="col-sm-4">
+          <div *ngIf="areja" class="d-inline">
+            <div *ngFor="let sub of areja">
+              ObserverA: {{sub}}
+            </div>
+          </div>
+          <br>
+          <div *ngIf="areja2" class="d-inline">
+              <div *ngFor="let sub of areja2">
+                ObserverB: {{sub}}
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-4"><button class="btn btn-warning d-inline"  (click)="pushToSubject2()">Push another</button></div>
+      </div>    
+    </div>
+  </div>
+
+
+  <div class="row mb-3">
+      <div class="col-sm-2">
+          <h4>BehaviorSubject</h4>
+      </div>
+      <div class="col-sm-6">
+        <p>Has a notion of "the current value". It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately receive the "current value" from the BehaviorSubject.</p>
+          <p><em>Feed values 1,2 to BehaviorSubject, then create second observer and push value 3.</em></p>
+       </div>
+      <div class="col-sm-4">
+        <div class="row">
+          <div class="col-sm-4">
+          <button class="btn btn-warning d-inline"  (click)="pushToBehavior()">Feed</button></div>
+          <div class="col-sm-4">
+            <div *ngIf="areja" class="d-inline">
+              <div *ngFor="let sub of areja3">
+                ObserverA: {{sub}}
+              </div>
+            </div>
+            <br>
+            <div *ngIf="areja2" class="d-inline">
+                <div *ngFor="let sub of areja4">
+                  ObserverB: {{sub}}
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-4"><button class="btn btn-warning d-inline"  (click)="pushToBehavior2()">Push another</button></div>
+        </div>    
+      </div>
+    </div>
+
+
+
+
+    <div class="row mb-3">
+        <div class="col-sm-2">
+            <h4>ReplaySubject</h4>
+        </div>
+        <div class="col-sm-6">
+          <p>Can send old values to new subscribers, but it can also record a part of the Observable execution.</p>
+            <p><em>Feed values 1, 2, 3, 4 to ReplaySubject with buffer of 3 values, then create second observer and push value 5.</em></p>
+         </div>
+        <div class="col-sm-4">
+          <div class="row">
+            <div class="col-sm-4">
+            <button class="btn btn-warning d-inline"  (click)="pushToReplay()">Feed</button></div>
+            <div class="col-sm-4">
+              <div *ngIf="areja" class="d-inline">
+                <div *ngFor="let sub of areja5">
+                  ObserverA: {{sub}}
+                </div>
+              </div>
+              <br>
+              <div *ngIf="areja2" class="d-inline">
+                  <div *ngFor="let sub of areja6">
+                    ObserverB: {{sub}}
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-4"><button class="btn btn-warning d-inline"  (click)="pushToReplay2()">Push another</button></div>
+          </div>    
+        </div>
+      </div>
+
+
+      
+    <div class="row mb-3">
+        <div class="col-sm-2">
+            <h4>ASyncSubject</h4>
+        </div>
+        <div class="col-sm-6">
+          <p>The AsyncSubject is a variant where only the last value of the Observable execution is sent to its observers, and only when the execution completes.</p>
+            <p><em>Feed values 1, 2, 3, 4 then create second observer and push value 5 and then complete.</em></p>
+         </div>
+        <div class="col-sm-4">
+          <div class="row">
+            <div class="col-sm-4">
+            <button class="btn btn-warning d-inline"  (click)="pushToAsync()">Feed</button></div>
+            <div class="col-sm-4">
+              <div  class="d-inline">
+                <div *ngFor="let sub of areja7">
+                  ObserverA: {{sub}}
+                </div>
+              </div>
+              <br>
+              <div  class="d-inline">
+                  <div *ngFor="let sub of areja8">
+                    ObserverB: {{sub}}
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-4"><button class="btn btn-warning d-inline"  (click)="pushToAsync2()">Push another</button></div>
+          </div>    
+        </div>
+      </div>
+
+
+
+  <p>RxJS has a whole range of operators that helps you control how the events flow through your observables. Flow control operators are filter, delay, throttleTime, debounceTime, take, takeUntil, distinct, distinctUntilChanged ... </p>
+  <h4 class="d-inline">fromEvent </h4> - Catch keystroke - <mark> Type something ...</mark>  <span>{{keyStroke}}</span>
+
+  <div class="row mb-3">
+    <div class="col-sm-2">
+        <h4>create</h4>
+    </div>
+    <div class="col-sm-6">
+        <p> Create</p>
+     </div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-4">
+        <button class="btn btn-warning d-inline" [disabled]="createBtn" (click)="createObs()">Start create</button></div>
+        <div class="col-sm-4"><div *ngIf="create" class="d-inline">{{create.name}}</div></div>
+        <div class="col-sm-4"><button class="btn btn-warning d-inline" [disabled]="!createBtn" (click)="stopCreate()">Unsubscirbe</button></div>
+      </div>    
+    </div>
+  </div>
+
+
+
+
+  <div class="row mb-3">
+    <div class="col-sm-2">
+        <h4>timer</h4>
+    </div>
+    <div class="col-sm-6">
+        <p> Start timer after 3 seconds with interval of 2 seconds</p>
+     </div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-4">
+        <button class="btn btn-primary d-inline" [disabled]="timerBtn" (click)="startTimer()">Start Timer</button>
+        </div>
+        <div class="col-sm-4">
+          <div class="d-inline timer">{{timers}}</div>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-primary d-inline" [disabled]="!timerBtn" (click)="stopTimer()">Stop Timer</button>
+        </div>
+        </div>  
+      </div>    
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col-sm-2">
+        <h4>interval</h4>
+    </div>
+    <div class="col-sm-6">
+        <p> Emits in interval of 1 seconds</p>
+     </div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-4">
+          <button class="btn btn-success d-inline" [disabled]="intervalBtn" (click)="startInterval()">Start Interval</button>
+        </div>
+        <div class="col-sm-4">
+          <div class="d-inline timer">{{intervals}}</div>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-success d-inline" [disabled]="!intervalBtn" (click)="stopInterval()">Stop Interval</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+      <div class="col-sm-2">
+          <h4>from</h4>
+      </div>
+      <div class="col-sm-6">
+          <p> Turn an string, array, promise, or iterable into an observable.</p>
+       </div>
+      <div class="col-sm-4">
+        <div class="row">
+          <div class="col-sm-4">
+            <button class="btn btn-danger d-inline" [disabled]="fromBtn" (click)="startFrom()">From array</button>
+          </div>
+          <div class="col-sm-4">
+            <div class="d-inline timer">{{from}}</div>
+          </div>
+          <div class="col-sm-4">
+            <button class="btn btn-danger d-inline" [disabled]="!fromBtn" (click)="stopFrom()">Unsubscibe</button>
+          </div>
+        </div>
+      </div>    
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-2">
+            <h4>of</h4>
+        </div>
+        <div class="col-sm-6">
+          <p> Emit variable amount of values in a sequence and then emits a complete notification.</p>
+        </div>
+        <div class="col-sm-4">
+          <div class="row">
+            <div class="col-sm-4">
+              <button class="btn btn-info d-inline" [disabled]="ofBtn" (click)="startOf()">of array</button>
+            </div>
+            <div class="col-sm-4">
+              <div class="d-inline timer">{{of}}</div>
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-info d-inline" [disabled]="!ofBtn" (click)="stopOf()">Unsubscibe</button>
+            </div>
+          </div>
+        </div>    
+      </div>
+    
+
+
+  
+
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
 <router-outlet></router-outlet>
