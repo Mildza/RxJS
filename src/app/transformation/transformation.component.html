@@ -1,0 +1,169 @@
+<h3 class="text-center mb-3 jumbotron py-1">Transformation operators</h3>
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>map</h4></div>
+  <div class="col-sm-6">
+    <p>
+      Applies a given function to each value emitted by the source Observable,
+      and emits the resulting values as an Observable.
+    </p>
+    <p>
+      <em
+        >Array [1, 2, 3, 4, 5] multpile by 5, we can pass value and second
+        parameter - index</em
+      >
+    </p>
+    <ul>
+      <li>
+        <strong> mapTo </strong> - Emits the given constant value on the output
+        Observable every time the source Observable emits a value.
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-info d-inline"
+          [disabled]="mapBtn"
+          (click)="startMap()"
+        >
+          map
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div *ngIf="maps">
+          <div class="d-inline timer" *ngFor="let map of maps">
+            {{ map.index }} : {{ map.values }} <br />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-info d-inline"
+          [disabled]="!mapBtn"
+          (click)="stopMap()"
+        >
+          Unsubscibe
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>reduce</h4></div>
+  <div class="col-sm-6">
+    <p>
+      Applies an accumulator function over the source Observable, and returns
+      the accumulated result when the source completes, given an optional seed
+      value.
+    </p>
+    <p>
+      <em
+        >Source observable is of[1, 2, 3, 4] and result is sum of this
+        numebrs.</em
+      >
+    </p>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-info d-inline"
+          [disabled]="reduceBtn"
+          (click)="startReduce()"
+        >
+          reduce
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div>
+          <div class="d-inline timer">{{ reduces }} <br /></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-info d-inline"
+          [disabled]="!reduceBtn"
+          (click)="stopReduce()"
+        >
+          Unsubscibe
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>scan</h4></div>
+  <div class="col-sm-6">
+    <p>
+      It's like reduce, but emits the current accumulation whenever the source
+      emits a value.
+    </p>
+    <p><em>On every mouse click emit value 1 and accumulate it.</em></p>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4"><p>Mouse Click</p></div>
+      <div class="col-sm-4">
+        <div class="d-inline timer">{{ scans }} <br /></div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+</div>
+<hr />
+
+<div class="row mb-4">
+  <div class="col-sm-2"><h4>buffer</h4></div>
+  <div class="col-sm-6">
+    <p>Collect output values until provided observable emits, emit as array.</p>
+    <p>
+      <em
+        >Inerval emits every second value, buffer on mouse click catch the
+        emmited values.</em
+      >
+    </p>
+    <ul>
+      <li>
+        <strong>bufferTime</strong> - Collect emitted values until provided time
+        has passed, emit as array.
+      </li>
+      <li>
+        <strong>bufferCount</strong> - Collect emitted values until provided
+        number is fulfilled, emit as array.
+      </li>
+      <li>
+        <strong>bufferWhen</strong> - Collect all values until closing selector
+        emits, emit buffered values.
+      </li>
+      <li>
+        <strong>bufferToggle</strong> - Toggle on to catch emitted values from
+        source, toggle off to emit buffered values as array.
+      </li>
+      <em>Try copy-paste: </em>
+      <span>{{ bufferToggles }}</span>
+    </ul>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button class="btn btn-success d-inline" (click)="startBuffer()">
+          Start Buffer
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-inline timer">{{ buffers }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button id="buffer" class="btn btn-success d-inline">
+          Display Buffer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

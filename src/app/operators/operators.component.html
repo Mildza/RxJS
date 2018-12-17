@@ -1,0 +1,259 @@
+<h2 class="text-center jumbotron py-3">OPERATORS</h2>
+
+<p>
+  RxJS has a whole range of operators that helps you control how the events flow
+  through your observables. Flow control operators are filter, delay,
+  throttleTime, debounceTime, take, takeUntil, distinct, distinctUntilChanged
+  ...
+</p>
+
+<h3 class="text-center mb-3 jumbotron py-1">Creation operators</h3>
+
+<!--
+  <h4 class="d-inline">fromEvent </h4> - Turn event into observable sequence. Catch keystroke - <mark> Type something ...</mark>  <span>{{keyStroke}}</span>
+-->
+<hr />
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>fromEvent</h4></div>
+  <div class="col-sm-6">
+    <p>Turn event into observable sequence. Catch keystroke.</p>
+  </div>
+  <div class="col-sm-4">
+    <p class="d-flex align-items-start">
+      <mark> Type something ...</mark> <span>{{ keyStroke }}</span>
+    </p>
+  </div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>create</h4></div>
+  <div class="col-sm-6">
+    <p>Create an observable with given subscription function.</p>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-warning d-inline"
+          [disabled]="createBtn"
+          (click)="createObs()"
+        >
+          Start create
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div *ngIf="create" class="d-inline">{{ create.name }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-warning d-inline"
+          [disabled]="!createBtn"
+          (click)="stopCreate()"
+        >
+          Unsubscirbe
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>timer</h4></div>
+  <div class="col-sm-6">
+    <p>
+      Creates an Observable that starts emitting after an delay time (optional)
+      and emits ever increasing numbers after each period of time thereafter.
+    </p>
+    <p><em> Start timer after 3 seconds with interval of 2 seconds.</em></p>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-primary d-inline"
+          [disabled]="timerBtn"
+          (click)="startTimer()"
+        >
+          Start Timer
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-inline timer">{{ timers }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-primary d-inline"
+          [disabled]="!timerBtn"
+          (click)="stopTimer()"
+        >
+          Stop Timer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row mb-4">
+  <div class="col-sm-2"><h4>interval</h4></div>
+  <div class="col-sm-6">
+    <p>
+      Creates an Observable that emits sequential numbers every specified
+      interval of time
+    </p>
+    <p><em>Emits in interval of 1 seconds</em></p>
+    <p>Common filtering operators come with interval:</p>
+    <ul>
+      <li>
+        <strong>take</strong> - returns an Observable that emits only the first
+        count values emitted by the source Observable
+      </li>
+      <li>
+        <strong> takeLast</strong> - emits only the last count values emitted by
+        the source Observable when the source completes.
+      </li>
+      <li>
+        <strong> takeUntil</strong> - emits the values emitted by the source
+        Observable until a notifier (second) Observable emits a value.
+      </li>
+      <li>
+        <strong> takeWhile</strong> - emits values emitted by the source
+        Observable so long as each value satisfies the given statement.
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-success d-inline"
+          [disabled]="intervalBtn"
+          (click)="startInterval()"
+        >
+          Start Interval
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-inline timer">{{ intervals }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-success d-inline"
+          [disabled]="!intervalBtn"
+          (click)="stopInterval()"
+        >
+          Stop Interval
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>range</h4></div>
+  <div class="col-sm-6">
+    <p>Emit numbers in provided range in sequence (start, count).</p>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-secondary d-inline"
+          [disabled]="rangeBtn"
+          (click)="startRange()"
+        >
+          Range 3-7
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-inline timer">{{ rangeArr }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-secondary d-inline"
+          [disabled]="!rangeBtn"
+          (click)="stopRange()"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>from</h4></div>
+  <div class="col-sm-6">
+    <p>Turn an string, array, promise, or iterable into an observable.</p>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-danger d-inline"
+          [disabled]="fromBtn"
+          (click)="startFrom()"
+        >
+          From array
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-inline timer">{{ from }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-danger d-inline"
+          [disabled]="!fromBtn"
+          (click)="stopFrom()"
+        >
+          Unsubscibe
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>of</h4></div>
+  <div class="col-sm-6">
+    <p>
+      Emit variable amount of values in a sequence and then emits a complete
+      notification.
+    </p>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <button
+          class="btn btn-info d-inline"
+          [disabled]="ofBtn"
+          (click)="startOf()"
+        >
+          of array
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-inline timer">{{ of }}</div>
+      </div>
+      <div class="col-sm-4">
+        <button
+          class="btn btn-info d-inline"
+          [disabled]="!ofBtn"
+          (click)="stopOf()"
+        >
+          Unsubscibe
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />

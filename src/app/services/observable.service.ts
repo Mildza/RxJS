@@ -4,7 +4,7 @@ import { Observable, Subject, BehaviorSubject, ReplaySubject, AsyncSubject } fro
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class ObservableService {
 
   private subject = new Subject()
   private behavior = new BehaviorSubject(0)

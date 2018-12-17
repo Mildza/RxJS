@@ -1,0 +1,13 @@
+.btn {
+  min-width: 120px;
+}
+.timer {
+  margin: 0px 1 0px;
+  color: rgb(196, 68, 9);
+}
+span {
+  color: red;
+  font-size: 1.5em;
+  padding-left: 30px;
+  margin-top: -6px;
+}

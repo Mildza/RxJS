@@ -1,0 +1,87 @@
+<h3 class="text-center mb-3 jumbotron py-1">Combination operators</h3>
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>merge</h4></div>
+  <div class="col-sm-6">
+    <p>Turn multiple observables into a single observable.</p>
+  </div>
+  <div class="col-sm-4"><em>merge(first, second, third)</em></div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>concat</h4></div>
+  <div class="col-sm-6">
+    <p>Subscribe to observables in order as previous completes, emit values.</p>
+  </div>
+  <div class="col-sm-4"><em>sourceOne.pipe(concat(sourceTwo))</em></div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>combineLatest</h4></div>
+  <div class="col-sm-6">
+    <p>When any observable emits a value, emit the latest value from each.</p>
+  </div>
+  <div class="col-sm-4">
+    <em> combineLatest(timerOne, timerTwo, timerThree)</em>
+  </div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>race</h4></div>
+  <div class="col-sm-6"><p>The observable to emit first is used.</p></div>
+  <div class="col-sm-4"><em>race(timerOne, timerTwo, timerThree)</em></div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>startWith</h4></div>
+  <div class="col-sm-6"><p>Emit given value first.</p></div>
+  <div class="col-sm-4"><em>source.pipe(startWith(0))</em></div>
+</div>
+<hr />
+
+<h3 class="text-center mb-3 jumbotron py-1">Other operators</h3>
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>finalize</h4></div>
+  <div class="col-sm-6">
+    <p>Call a function when observable completes or errors.</p>
+  </div>
+  <div class="col-sm-4">
+    <em>finalize(() => console.log('Sequence complete'))</em>
+  </div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>repeat</h4></div>
+  <div class="col-sm-6">
+    <p>
+      Repeats the stream of items emitted by the source Observable at most count
+      times.
+    </p>
+  </div>
+  <div class="col-sm-4"><em>repeat(5)</em></div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>delayWhen</h4></div>
+  <div class="col-sm-6">
+    <p>Delay emitted values determined by provided function.</p>
+  </div>
+</div>
+<hr />
+
+<div class="row mb-3">
+  <div class="col-sm-2"><h4>iif</h4></div>
+  <div class="col-sm-6">
+    <p>
+      Decides at subscription time which Observable will actually be subscribed.
+    </p>
+  </div>
+</div>
+<hr />
